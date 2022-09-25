@@ -1,0 +1,39 @@
+{
+  "name": "electron-calc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js",
+    "packagewin": "electron-packager ./calculator --platform=win32 --out=./calculator --arch=x64 --app-version=1.0.1 --icon=./images/icon.ico --overwrite",
+    "buildmac": "electron-builder --platform=mac --arch=x64",
+    "buildwin": "electron-builder --win --x64"
+  },
+  "build": {
+    "appId": "zp.app",
+    "directories": {
+      "app": "./"
+    },
+    "productName": "计算器",
+    "dmg": {
+      "icon":"./images/mac.icns",
+      "window": {
+        "x": "200",
+        "y": "150",
+        "width": 500,
+        "height": 400
+      }
+    },
+    "mac": {"icon":"./images/mac.icns"},
+    "win": {"icon":"./images/icon.ico"}
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mathjs": "^5.2.3"
+  },
+  "devDependencies": {
+    "electron": "^3.0.7",
+    "electron-packager": "^12.2.0"
+  }
+}
