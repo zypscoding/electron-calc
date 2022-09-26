@@ -5,18 +5,18 @@
   "main": "main.js",
   "scripts": {
     "start": "electron main.js",
-    "packagewin": "electron-packager ./calculator --platform=win32 --out=./calculator --arch=x64 --app-version=1.0.1 --icon=./images/icon.ico --overwrite",
+    "packagewin": "electron-packager ./ zp --platform=win32 --out=./dist --arch=x64 --app-version=1.0.0 --icon=./images/icon.ico --overwrite",
     "buildmac": "electron-builder --platform=mac --arch=x64",
     "buildwin": "electron-builder --win --x64"
   },
   "build": {
-    "appId": "zp.app",
-    "directories": {
-      "app": "./"
-    },
     "productName": "计算器",
+    "appId": "com.zp.app",
+    "directories": {
+      "output": "build"
+    },
     "dmg": {
-      "icon":"./images/mac.icns",
+      "icon": "./images/mac.icns",
       "window": {
         "x": "200",
         "y": "150",
@@ -24,8 +24,31 @@
         "height": 400
       }
     },
-    "mac": {"icon":"./images/mac.icns"},
-    "win": {"icon":"./images/icon.ico"}
+    "mac": {
+      "icon": "./images/mac.icns"
+    },
+    "win": {
+      "icon": "./images/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "./images/icon.ico",
+      "uninstallerIcon": "./images/icon.ico",
+      "installerHeaderIcon": "./images/icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "zp计算器"
+    }
   },
   "author": "",
   "license": "ISC",
